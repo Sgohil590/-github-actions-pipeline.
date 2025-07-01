@@ -2,7 +2,7 @@ name: Deploy React app to S3
 
 on:
   push:
-    branches: [main]  
+    branches: [master]  # or [main] if your repo uses 'main'
 
 jobs:
   deploy:
@@ -10,7 +10,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: client  # tells all `run:` steps to execute inside client/
+        working-directory: client
 
     steps:
       - name: Checkout code
@@ -21,10 +21,10 @@ jobs:
         with:
           node-version: 17
 
-      - name: Install dependencies
+      - name: Install Dependencies
         run: npm install
 
-      - name: Build React app
+      - name: Build React App
         run: npm run build
 
       - name: Deploy to AWS S3
