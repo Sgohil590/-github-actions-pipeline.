@@ -2,7 +2,7 @@ name: Deploy React app to S3
 
 on:
   push:
-    branches: [main]
+    branches: [master]  # or [main] if you're using main
 
 jobs:
   deploy:
@@ -10,7 +10,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: client  
+        working-directory: client
 
     steps:
       - name: Checkout code
@@ -34,7 +34,6 @@ jobs:
         env:
           AWS_S3_BUCKET: gitact
           AWS_REGION: ap-south-1
-          SOURCE_DIR: build  
+          SOURCE_DIR: build
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-
