@@ -2,7 +2,7 @@ name: Deploy React app to S3
 
 on:
   push:
-    branches: [master]  # or [main] if you're using main
+    branches: [main]  
 
 jobs:
   deploy:
@@ -10,7 +10,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: client
+        working-directory: client  # tells all `run:` steps to execute inside client/
 
     steps:
       - name: Checkout code
